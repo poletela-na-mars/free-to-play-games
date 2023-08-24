@@ -1,0 +1,21 @@
+@import './../variables';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(1vw + 3rem);
+  padding: 20px 20px;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: calc(1vw + 1rem);
+    color: $snow;
+  }
+}

@@ -1,0 +1,31 @@
+@import './../variables';
+
+.container {
+  height: calc(1vw + 3rem);
+  padding: 20px;
+
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    .label {
+      color: $silver-lake-blue;
+      font-weight: 500;
+      font-size: calc(1vw + 0.8rem);
+      list-style-type: none;
+      padding: 10px;
+
+      .typeLabel {
+        margin: 0;
+      }
+
+      li {
+
+      }
+    }
+
+  }
+}

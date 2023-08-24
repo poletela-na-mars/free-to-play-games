@@ -1,0 +1,26 @@
+@import './variables';
+
+body {
+  background-color: $rich-black;
+  margin: 0;
+  font-family: 'Manrope', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  height: 100%;
+  margin: 40px auto;
+  max-width: 1400px;
+
+  @media (max-width: 645px) {
+    width: calc(100vw - 30px);
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.content {
+  padding: 20px;
+}
