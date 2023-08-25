@@ -1,4 +1,9 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+
+import { AppDispatch } from '../../redux/store';
+import { selectFilter } from '../../redux/filter/selectors';
+import { setGenre, setPlatform, setSort } from '../../redux/filter/slice';
 
 import { ReactComponent as DownArrowIcon } from './../../assets/img/down-arrow-icon.svg';
 
@@ -7,6 +12,8 @@ import { CategoryType, genresList, platformsList, sortsList } from '../../assets
 import styles from './../../scss/components/TopPanel.module.scss';
 
 export const TopPanel = () => {
+  const { platform, genre, sort } = useSelector(selectFilter);
+
   const [isPlatformPopupOpen, setIsPlatformPopupOpen] = useState(false);
   const [isGenrePopupOpen, setIsGenrePopupOpen] = useState(false);
   const [isSortPopupOpen, setIsSortPopupOpen] = useState(false);
@@ -14,6 +21,19 @@ export const TopPanel = () => {
   const [activePlatform, setActivePlatform] = useState(0);
   const [activeGenre, setActiveGenre] = useState(0);
   const [activeSort, setActiveSort] = useState(0);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    setActivePlatform(platform);
+    setActiveGenre(genre);
+    setActiveSort(sort);
+
+    // close popups, if they were opened before navigating to '/'
+    setIsPlatformPopupOpen(false);
+    setIsGenrePopupOpen(false);
+    setIsSortPopupOpen(false);
+  }, [genre, platform, sort]);
 
   const onDownArrowClickHandler = (type: number) => {
     switch (type) {
@@ -35,12 +55,18 @@ export const TopPanel = () => {
     switch (type) {
       case CategoryType.Platform:
         setActivePlatform(idx);
+        dispatch(setPlatform(idx));
+        setIsPlatformPopupOpen(!isPlatformPopupOpen);
         break;
       case CategoryType.Genre:
         setActiveGenre(idx);
+        dispatch(setGenre(idx));
+        setIsGenrePopupOpen(!isGenrePopupOpen);
         break;
       case CategoryType.Sort:
         setActiveSort(idx);
+        dispatch(setSort(idx));
+        setIsSortPopupOpen(!isSortPopupOpen);
         break;
       default:
         break;

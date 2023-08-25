@@ -1,3 +1,5 @@
+export const ServerURL = 'https://www.freetogame.com/api/';
+
 export const platformsList = ['All Platforms', 'Windows (PC)', 'Browser (Web)'];
 
 export const genresList = ['All Genres', 'MMO', 'MMORPG', 'Shooter', 'Strategy', 'Moba', 'Card Games', 'Racing',
@@ -12,4 +14,10 @@ export enum CategoryType {
   Platform,
   Genre,
   Sort,
+}
+
+export enum Status {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
 }
