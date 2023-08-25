@@ -4,27 +4,110 @@
   height: calc(1vw + 3rem);
   padding: 20px;
 
+  li {
+    list-style-type: none;
+  }
+
   .labels {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
     padding: 0;
     margin: 0;
 
     .label {
+      flex-basis: 25%;
+
+      display: flex;
+
       color: $silver-lake-blue;
       font-weight: 500;
-      font-size: calc(1vw + 0.8rem);
-      list-style-type: none;
+      font-size: calc(1vw + 0.6rem);
       padding: 10px;
 
       .typeLabel {
+        display: inline-block;
         margin: 0;
       }
 
-      li {
+      .activeTypeBlock {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        svg {
+          fill: $snow;
+          margin-left: 10px;
+          width: calc(1vw + 1rem);
+          height: calc(1vw + 1rem);
+
+          cursor: pointer;
+        }
+
+        .activeTypeLabel {
+          cursor: pointer;
+          text-decoration: underline dotted $oxford-blue;
+          text-decoration-thickness: 2px;
+          text-underline-offset: 8px;
+          color: $snow;
+          display: inline-block;
+          margin: 0;
+        }
+      }
+
+      .block {
+        display: flex;
+        flex-direction: column;
+
+        .list {
+          position: relative;
+          z-index: 1000;
+
+          overflow-y: auto;
+          width: 100%;
+          max-height: calc(5 * (1.5 * (1vw + 0.6rem)) + 16px);
+
+          background-color: $oxford-blue;
+          border-radius: $light-border-radius;
+
+          margin-top: 16px;
+          padding: 8px 10px;
+
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background-color: $oxford-blue;
+            border-radius: 0 $light-border-radius $light-border-radius 0;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            border: 7px solid transparent;
+            background: $silver-lake-blue;
+            border-radius: $light-border-radius;
+          }
+
+          .listItem {
+            cursor: pointer;
+            word-break: keep-all;
+            font-weight: 300;
+            line-height: 1.5;
+            color: $silver-lake-blue;
+            padding: 2px;
+            transition: color $fast-transition-dur ease-out;
+
+            &:hover {
+              color: $platinum;
+            }
+
+          }
+        }
 
       }
+
     }
 
   }

@@ -11,6 +11,7 @@ $container-width: 90%;
 $border-radius: 30px;
 $light-border-radius: 10px;
 
-$popup-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+$box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
 
-$duration: 0.15s;
+$fast-transition-dur: 100ms;
+$medium-transition-dur: 0.5s;

@@ -13,9 +13,25 @@
     text-decoration: none;
   }
 
-  h1 {
-    font-weight: 700;
-    font-size: calc(1vw + 1rem);
-    color: $snow;
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+
+    h1 {
+      display: inline-block;
+      font-weight: 700;
+      font-size: calc(1vw + 1rem);
+      color: $snow;
+      margin: 0;
+    }
+
+    svg {
+      fill: $snow;
+      margin-left: 16px;
+      width: calc(1vw + 1rem);
+      height: calc(1vw + 1rem);
+    }
   }
 }
