@@ -1,7 +1,7 @@
 @import './../variables';
 
 .container {
-  height: calc(1vw + 3rem);
+  //height: calc(1vw + 3rem);
   padding: 20px;
 
   li {
@@ -12,7 +12,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
+    
+    @media (max-width: 800px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     padding: 0;
     margin: 0;
@@ -60,13 +64,19 @@
       .block {
         display: flex;
         flex-direction: column;
+        position: relative;
+        flex-basis: 65%;
+
+        @media (max-width: 800px) {
+          flex-basis: 100%;
+        }
 
         .list {
-          position: relative;
+          position: absolute;
           z-index: 1000;
+          top: calc(1vw + 1rem);
 
           overflow-y: auto;
-          width: 100%;
           max-height: calc(5 * (1.5 * (1vw + 0.6rem)) + 16px);
 
           background-color: $oxford-blue;

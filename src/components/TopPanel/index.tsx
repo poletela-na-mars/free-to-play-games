@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { ReactComponent as DownArrowIcon } from './../../assets/img/down-arrow-icon.svg';
 
-import styles from './../../scss/components/TopPanel.module.scss';
-
 import { CategoryType, genresList, platformsList, sortsList } from '../../assets/consts';
+
+import styles from './../../scss/components/TopPanel.module.scss';
 
 export const TopPanel = () => {
   const [isPlatformPopupOpen, setIsPlatformPopupOpen] = useState(false);
@@ -102,7 +102,7 @@ export const TopPanel = () => {
 
           <li className={styles.label}>
             <p className={styles.typeLabel}>
-              Sort By:&nbsp;&nbsp;
+              Sort&nbsp;By:&nbsp;&nbsp;
             </p>
             <div className={styles.block}>
               <div className={styles.activeTypeBlock}>

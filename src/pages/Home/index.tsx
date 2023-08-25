@@ -1,9 +1,12 @@
-import { TopPanel } from '../../components';
+import { GamesList, TopPanel } from '../../components';
+
+import styles from './../../scss/App.module.scss';
 
 export const Home = () => {
   return (
-      <div>
+      <main className={styles.spaceFiller}>
         <TopPanel />
-      </div>
+        <GamesList />
+      </main>
   );
 };
