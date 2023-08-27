@@ -22,7 +22,7 @@ export interface Game {
   release_date: string;
 }
 
-export interface FullGameData extends Game{
+export interface FullGameData extends Game {
   developer: string;
   freetogame_profile_url: string;
   game_url: string;

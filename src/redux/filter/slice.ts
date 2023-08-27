@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { FilterState } from '../../types/redux/types';
 
+import { genresListLen, platformsListLen, sortsListLen } from '../../assets/consts';
+
 const initialState: FilterState = {
   platform: 0,
   genre: 0,
@@ -22,9 +24,10 @@ const filterSlice = createSlice({
       state.sort = action.payload;
     },
     setFilters(state, action) {
-      state.platform = action.payload.genre;
-      state.genre = action.payload.genre;
-      state.sort = action.payload.sort;
+      if (0 <= action.payload.platform && action.payload.platform <= platformsListLen) state.platform =
+          action.payload.platform;
+      if (0 <= action.payload.genre && action.payload.genre <= genresListLen) state.genre = action.payload.genre;
+      if (0 <= action.payload.sort && action.payload.sort <= sortsListLen) state.sort = action.payload.sort;
     },
   }
 });

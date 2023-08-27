@@ -64,7 +64,6 @@ export const GamesList = () => {
   const mappedGames = games.map((game: Game) => <GameBlock key={game.id} {...game} />);
   const skeletons = [...new Array(8)].map((_, idx) => <Skeleton key={idx} />);
 
-  // TODO - style
   return (
       <div className={styles.root}>
         {
