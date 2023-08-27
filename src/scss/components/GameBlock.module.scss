@@ -1,0 +1,68 @@
+@import './../variables';
+@import './../components/Skeleton.module';
+
+.gameBlockWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.gameBlockTextInfo {
+  padding: 0 16px 16px 16px;
+}
+
+.gameBlockImg {
+  border-radius: $light-border-radius $light-border-radius 0 0;
+  width: 100%;
+  height: 100%;
+  max-width: 280px;
+  max-height: 260px;
+  object-fit: cover;
+}
+
+a .gameBlockTitle {
+  display: inline-block;
+}
+
+.gameBlockTitleWrapper {
+  margin: 16px 0;
+}
+
+.ellipsisOverflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(100% - 32px);
+}
+
+.gameBlockTitle {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(100% - 32px);
+  margin: 0;
+
+  font-size: calc(1vw + 0.6rem);
+  font-weight: 400;
+  color: $snow;
+}
+
+.gameBlockDetails {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  p {
+    font-size: calc(1vw + 0.4rem);
+    font-weight: 300;
+    color: $silver-lake-blue;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+}

@@ -9,7 +9,7 @@ export const App = () => {
       <Routes>
         <Route path='/' element={<MainLayout />}>
           <Route path='' element={<Home />} />
-          <Route path=':id' element={<Game />} />
+          <Route path='game/:id' element={<Game />} />
         </Route>
       </Routes>
   );

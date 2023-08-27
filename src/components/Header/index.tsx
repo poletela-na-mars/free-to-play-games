@@ -24,11 +24,11 @@ export const Header = () => {
   };
 
   return (
-      <div className={styles.container}>
+      <header className={styles.container}>
         <span className={styles.header} onClick={() => onHomeNavigateHandler()}>
           <h1>Free-To-Play Games</h1>
           <GameControllerIcon />
         </span>
-      </div>
+      </header>
   );
 };

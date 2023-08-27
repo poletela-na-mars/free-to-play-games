@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
-import { Skeleton } from '../Skeleton';
+import { GameBlock, Skeleton } from '../index';
 
 import { AppDispatch } from '../../redux/store';
 import { selectFilter } from '../../redux/filter/selectors';
 import { selectGames } from '../../redux/games/selectors';
 import { setFilters } from '../../redux/filter/slice';
+import { fetchGames } from '../../redux/games/asyncActions';
 
 import styles from './../../scss/components/GamesList.module.scss';
+
 import { Status } from '../../assets/consts';
+import { Game } from '../../types/redux/types';
 
 export const GamesList = () => {
   const { platform, genre, sort } = useSelector(selectFilter);
@@ -20,6 +23,15 @@ export const GamesList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const isMounted = useRef<boolean>(false);
+
+  const getGames = () => {
+    dispatch(fetchGames({
+          platform,
+          genre,
+          sort
+        })
+    );
+  };
 
   useEffect(() => {
     if (window.location.search) {
@@ -30,6 +42,10 @@ export const GamesList = () => {
       }));
     }
   }, []);
+
+  useEffect(() => {
+    getGames();
+  }, [platform, genre, sort]);
 
   useEffect(() => {
     if (isMounted.current) {
@@ -45,7 +61,7 @@ export const GamesList = () => {
     isMounted.current = true;
   }, [platform, genre, sort]);
 
-  // const mappedProducts = products.map((product: Product) => <ItemBlock key={product.id} {...product} />);
+  const mappedGames = games.map((game: Game) => <GameBlock key={game.id} {...game} />);
   const skeletons = [...new Array(8)].map((_, idx) => <Skeleton key={idx} />);
 
   // TODO - style
@@ -57,13 +73,11 @@ export const GamesList = () => {
                 <h2>Произошла ошибка</h2>
                 <p>К сожалению, не удалось получить данные. Попробуйте повторить попытку позже.</p>
               </div>
-              : <div className='content__items'>
-                {
-                  status === Status.LOADING
-                      && skeletons
-                      // : (mappedProducts.length ? mappedProducts : <NotFoundProductsBlock />)
-                }
-              </div>
+              :
+              status === Status.LOADING
+                  ? skeletons
+                  : mappedGames
+          // : (mappedGames.length ? mappedGames : <NotFoundGamesBlock />)
         }
       </div>
   );

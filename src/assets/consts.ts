@@ -1,4 +1,4 @@
-export const ServerURL = 'https://www.freetogame.com/api/';
+export const ServerURL = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
 
 export const platformsList = ['All Platforms', 'Windows (PC)', 'Browser (Web)'];
 
@@ -9,6 +9,14 @@ export const genresList = ['All Genres', 'MMO', 'MMORPG', 'Shooter', 'Strategy',
   'Side Scroller', 'Superhero', 'Permadeath'];
 
 export const sortsList = ['Relevance', 'Popularity', 'Release Date', 'Alphabetical'];
+
+export const platformsListForReq = ['', 'pc', 'browser'];
+export const genresListForReq = ['', 'mmo', 'mmorpg', 'shooter', 'strategy', 'moba', 'card', 'racing',
+  'sports', 'social', 'fighting', 'mmofps', 'action-rpg', 'sandbox', 'open-world', 'survival', 'battle-royale',
+  'mmotps', 'anime', 'pvp', 'pve', 'pixel', 'mmorts', 'fantasy', 'sci-fi', 'action', 'voxel', 'zombie', 'turn-based',
+  'first-person', 'third-person', 'top-down', '3d', '2d', 'tank', 'space', 'sailing', 'side-scroller', 'superhero',
+  'permadeath'];
+export const sortsListForReq = ['relevance', 'popularity', 'release-date', 'alphabetical'];
 
 export enum CategoryType {
   Platform,

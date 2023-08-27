@@ -7,7 +7,7 @@ export interface FilterState {
 }
 
 export interface GamesState {
-  games: Game[];
+  games: FullGameData[];
   status: Status;
 }
 
@@ -17,8 +17,14 @@ export interface Game {
   id: number;
   title: string;
   thumbnail: string;
-  gameProfileUrl: string;
   genre: string;
   publisher: string;
-  releaseDate: string;
+  release_date: string;
+}
+
+export interface FullGameData extends Game{
+  developer: string;
+  freetogame_profile_url: string;
+  game_url: string;
+  short_description: string;
 }

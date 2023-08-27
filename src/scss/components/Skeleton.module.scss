@@ -1,6 +1,11 @@
+@import './../variables';
+
 .gameBlock {
-  padding: 20px 16px;
+  border-radius: $light-border-radius;
+  background-color: $oxford-blue;
   width: 280px;
-  text-align: center;
+  max-height: 505px;
+  height: 100%;
   margin-bottom: calc(1vw + 1.5em);
+  text-align: center;
 }
