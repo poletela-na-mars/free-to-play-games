@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { convertDate } from '../../utils/dateConverter';
+
 import { Game } from '../../types/redux/types';
 
 import styles from '../../scss/components/GameBlock.module.scss';
@@ -23,7 +25,7 @@ export const GameBlock = ({ id, title, genre, release_date, publisher, thumbnail
             </div>
             <div className={styles.gameBlockDetails}>
               <p className={styles.ellipsisOverflow}>{genre}</p>
-              <p className={styles.ellipsisOverflow}>Released:&nbsp;{release_date}</p>
+              <p>Released:&nbsp;{convertDate(release_date)}</p>
               <p className={styles.ellipsisOverflow}>{publisher}</p>
             </div>
           </div>

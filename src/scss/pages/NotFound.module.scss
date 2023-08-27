@@ -1,0 +1,24 @@
+@import '../variables';
+
+.root {
+  margin: 20px 20px;
+  text-align: center;
+  color: $silver-lake-blue;
+
+  h1 {
+    font-size: calc(1vw + 0.8rem);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: calc(1vw + 0.65rem);
+    margin: 20px 0;
+  }
+
+  img {
+    max-width: calc(10vw + 4rem);
+    max-height: calc(10vw + 4rem);
+  }
+}

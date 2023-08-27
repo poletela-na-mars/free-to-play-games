@@ -22,6 +22,7 @@ export const fetchGames = createAsyncThunk<FullGameData[], FetchGamesArgs>(
         params: {
           ...axiosParams
         },
+        // Warning: in production sensitive info should be hidden
         headers: {
           'X-RapidAPI-Key': '6620decf15msh097fc5744cbf35fp1dc413jsn907640f36a5c',
           'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
@@ -29,6 +30,8 @@ export const fetchGames = createAsyncThunk<FullGameData[], FetchGamesArgs>(
       };
 
       const { data } = await axios.request<FullGameData[]>(options);
+      console.log(data)
+
 
       return data;
     }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
-import { GameBlock, Skeleton } from '../index';
+import { ErrorBlock, GameBlock, NotFoundGamesBlock, Skeleton } from '../index';
 
 import { AppDispatch } from '../../redux/store';
 import { selectFilter } from '../../redux/filter/selectors';
@@ -69,15 +69,11 @@ export const GamesList = () => {
       <div className={styles.root}>
         {
           status === Status.ERROR
-              ? <div className='content__error-info'>
-                <h2>Произошла ошибка</h2>
-                <p>К сожалению, не удалось получить данные. Попробуйте повторить попытку позже.</p>
-              </div>
+              ? <ErrorBlock />
               :
               status === Status.LOADING
                   ? skeletons
-                  : mappedGames
-          // : (mappedGames.length ? mappedGames : <NotFoundGamesBlock />)
+                  : (mappedGames.length ? mappedGames : <NotFoundGamesBlock />)
         }
       </div>
   );

@@ -6,8 +6,6 @@ export const Skeleton = () => (
     <ContentLoader
         className={styles.gameBlock}
         speed={2}
-        width={280}
-        height={415}
         viewBox='0 0 280 415'
         backgroundColor='#1B263B'
         foregroundColor='#415A77'

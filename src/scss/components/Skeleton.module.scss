@@ -2,10 +2,17 @@
 
 .gameBlock {
   border-radius: $light-border-radius;
-  background-color: $oxford-blue;
   width: 280px;
-  max-height: 505px;
-  height: 100%;
+  height: calc(260px + 32px + (1vw + 0.6rem) + (1vw + 0.4rem + 8px) * 3 + 16px + 32px);
   margin-bottom: calc(1vw + 1.5em);
   text-align: center;
+
+  @media (max-width: 1060px) {
+    height: calc(260px + 32px + (1vw + 0.8rem) + (1vw + 0.65rem + 8px) * 3 + 16px + 32px);
+  }
+
+  @media (max-width: 730px) {
+    height: calc(260px + 32px + (1vw + 0.8rem) + (1vw + 0.65rem + 8px) * 3 + 16px + 32px);
+  }
 }
+

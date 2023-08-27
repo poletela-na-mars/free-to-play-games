@@ -10,6 +10,16 @@ a {
   text-decoration: none;
 }
 
+.gameBlock {
+  background-color: $oxford-blue;
+  transition: scale $fast-transition-dur ease-out;
+
+  &:hover {
+    scale: 104%;
+    box-shadow: $box-shadow;
+  }
+}
+
 .gameBlockTextInfo {
   padding: 0 16px 16px 16px;
 }
@@ -49,6 +59,14 @@ a .gameBlockTitle {
   font-size: calc(1vw + 0.6rem);
   font-weight: 400;
   color: $snow;
+
+  @media (max-width: 730px) {
+    font-size: calc(1vw + 0.8rem);
+  }
+
+  @media (max-width: 1060px) {
+    font-size: calc(1vw + 0.8rem);
+  }
 }
 
 .gameBlockDetails {
@@ -64,5 +82,13 @@ a .gameBlockTitle {
     color: $silver-lake-blue;
     margin-top: 0;
     margin-bottom: 8px;
+
+    @media (max-width: 730px) {
+      font-size: calc(1vw + 0.65rem);
+    }
+
+    @media (max-width: 1060px) {
+      font-size: calc(1vw + 0.65rem);
+    }
   }
 }

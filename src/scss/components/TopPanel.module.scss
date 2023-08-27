@@ -32,6 +32,14 @@
       font-size: calc(1vw + 0.4rem);
       padding: 10px;
 
+      @media (max-width: 730px) {
+        font-size: calc(1vw + 0.8rem);
+      }
+
+      @media (max-width: 1060px) {
+        font-size: calc(1vw + 0.8rem);
+      }
+
       .typeLabel {
         display: inline-block;
         margin: 0;
