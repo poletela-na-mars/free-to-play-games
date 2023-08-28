@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
@@ -19,17 +19,19 @@ import { Game } from '../../types/redux/types';
 import styles from './../../scss/components/GamesList.module.scss';
 
 export const GamesList = () => {
-  const { platform, genre, sort } = useSelector(selectFilter);
-  const { games, status, currentPage } = useSelector(selectGames);
-
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const isMounted = useRef<boolean>(false);
 
+  const { platform, genre, sort } = useSelector(selectFilter);
+  const { games, status, currentPage } = useSelector(selectGames);
+
+  const [shouldFetchData, setShouldFetchData] = useState(false);
+
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
-  const getGames = () => {
-    dispatch(fetchGames({
+  const getGames = async () => {
+    await dispatch(fetchGames({
           platform,
           genre,
           sort,
@@ -39,6 +41,13 @@ export const GamesList = () => {
   };
 
   useEffect(() => {
+    if (inView) {
+      dispatch(setCurrentPage(currentPage + 1));
+      setShouldFetchData(!shouldFetchData);
+    }
+  }, [inView]);
+
+  useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
 
@@ -46,21 +55,7 @@ export const GamesList = () => {
         ...params,
       }));
     }
-
-    dispatch(setCurrentPage(0));
   }, []);
-
-  useEffect(() => {
-    dispatch(setCurrentPage(0));
-    dispatch(setGames([]));
-    getGames();
-  }, [platform, genre, sort]);
-
-  useEffect(() => {
-    if (isMounted.current) {
-      getGames();
-    }
-  }, [currentPage]);
 
   useEffect(() => {
     if (isMounted.current) {
@@ -71,14 +66,18 @@ export const GamesList = () => {
       });
 
       navigate(`?${queryString}`);
+
+      dispatch(setCurrentPage(0));
+      dispatch(setGames([]));
+      setShouldFetchData(!shouldFetchData);
     }
 
     isMounted.current = true;
   }, [platform, genre, sort]);
 
   useEffect(() => {
-    if (inView) dispatch(setCurrentPage(currentPage + 1));
-  }, [inView]);
+    getGames();
+  }, [shouldFetchData]);
 
   const mappedGames = games.map((game: Game, idx) => {
     const lastEl = idx === games.length - 1;
@@ -92,7 +91,7 @@ export const GamesList = () => {
           status === Status.ERROR
               ? <ErrorBlock />
               :
-              status === Status.LOADING
+              status === Status.LOADING && !mappedGames.length
                   ? skeletons
                   : (mappedGames.length ? mappedGames : <NotFoundGamesBlock />)
         }

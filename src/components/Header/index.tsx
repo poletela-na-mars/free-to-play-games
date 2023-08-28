@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { AppDispatch } from '../../redux/store';
 import { setFilters } from '../../redux/filter/slice';
-import { setCurrentPage, setGames } from '../../redux/games/slice';
-import { fetchGames } from '../../redux/games/asyncActions';
 
 import { FilterState } from '../../types/redux/types';
 
@@ -22,16 +20,8 @@ export const Header = () => {
       genre: 0,
       sort: 0,
     };
-    const zeroedCurrentPage = { currentPage: 0 };
 
     await dispatch(setFilters(params));
-    await dispatch(setCurrentPage(zeroedCurrentPage.currentPage));
-    await dispatch(setGames([]));
-    await dispatch(fetchGames({
-          ...params,
-          ...zeroedCurrentPage
-        })
-    );
 
     navigate('/');
   };
