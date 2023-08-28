@@ -9,9 +9,10 @@ export interface FilterState {
 export interface GamesState {
   games: FullGameData[];
   status: Status;
+  currentPage: number;
 }
 
-export type FetchGamesArgs = FilterState;
+export type FetchGamesArgs = FilterState & { currentPage: number };
 
 export interface Game {
   id: number;

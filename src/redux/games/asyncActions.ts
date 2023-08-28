@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { genresListForReq, platformsListForReq, ServerURL, sortsListForReq } from '../../assets/consts';
+import { genresListForReq, LIMIT_GAMES, platformsListForReq, ServerURL, sortsListForReq } from '../../assets/consts';
 
 import { FetchGamesArgs, FullGameData } from '../../types/redux/types';
 
 export const fetchGames = createAsyncThunk<FullGameData[], FetchGamesArgs>(
     'games/fetchGames',
     async (params) => {
-      const { platform, genre, sort } = params;
+      const { platform, genre, sort, currentPage } = params;
 
       const axiosParams = {
         ...(platformsListForReq[platform] ? { platform: platformsListForReq[platform] } : {}),
@@ -31,6 +31,6 @@ export const fetchGames = createAsyncThunk<FullGameData[], FetchGamesArgs>(
 
       const { data } = await axios.request<FullGameData[]>(options);
 
-      return data;
+      return data.slice(currentPage * LIMIT_GAMES, (currentPage + 1) * LIMIT_GAMES);
     }
 );

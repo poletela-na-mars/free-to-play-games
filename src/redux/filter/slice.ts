@@ -24,6 +24,9 @@ const filterSlice = createSlice({
       state.sort = action.payload;
     },
     setFilters(state, action) {
+      // to be honest, it'd be better to type filters as strings with their certain values to make code safer,
+      // but that is the way I chose :)
+
       if (0 <= action.payload.platform && action.payload.platform <= platformsListLen) state.platform =
           action.payload.platform;
       if (0 <= action.payload.genre && action.payload.genre <= genresListLen) state.genre = action.payload.genre;

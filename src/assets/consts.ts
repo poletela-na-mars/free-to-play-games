@@ -1,4 +1,5 @@
 export const ServerURL = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
+export const LIMIT_GAMES = 16;
 
 export const platformsList = ['All Platforms', 'Windows (PC)', 'Browser (Web)'];
 export const platformsListLen = platformsList.length;
