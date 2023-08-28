@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axiosRetry from 'axios-retry';
+import { axiosHomeInstance } from '../../assets/axiosConfig';
 
 import { genresListForReq, LIMIT_GAMES, platformsListForReq, ServerURL, sortsListForReq } from '../../assets/consts';
 
@@ -29,7 +30,25 @@ export const fetchGames = createAsyncThunk<FullGameData[], FetchGamesArgs>(
         }
       };
 
-      const { data } = await axios.request<FullGameData[]>(options);
+      axiosRetry(axiosHomeInstance, {
+        retries: 3,
+        retryDelay: (...arg) => axiosRetry.exponentialDelay(...arg, 1000),
+        retryCondition: (error) => {
+          switch (error.response?.status) {
+            case 404:
+            case 429:
+            case 500:
+            case 502:
+            case 503:
+            case 504:
+              return true;
+            default:
+              return false;
+          }
+        },
+      });
+
+      const { data } = await axiosHomeInstance.request<FullGameData[]>(options);
 
       return data.slice(currentPage * LIMIT_GAMES, (currentPage + 1) * LIMIT_GAMES);
     }

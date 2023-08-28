@@ -25,3 +25,33 @@ body {
   padding: 20px;
 }
 
+.scrollToTopButton {
+  cursor: pointer;
+  position: fixed;
+  z-index: 1001;
+  width: calc(1vw + 1.5rem);
+  height: calc(1vw + 1.5rem);
+  margin: 8px;
+
+  bottom: 10px;
+  right: 10px;
+
+  polygon, circle {
+    stroke: $oxford-blue;
+  }
+
+  animation: fading $medium-transition-dur linear alternate;
+  transition: $fast-transition-dur all ease-out;
+
+  @media (max-width: 450px) {
+    width: calc(1vw + 1.1rem);
+    height: calc(1vw + 1.1rem);
+  }
+
+  &:hover {
+    polygon, circle {
+      stroke: $ylnmn-blue;
+    }
+  }
+}
+
