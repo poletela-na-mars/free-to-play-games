@@ -24,18 +24,24 @@ export const TopPanel = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  const resetPopups = () => {
+    setIsPlatformPopupOpen(false);
+    setIsGenrePopupOpen(false);
+    setIsSortPopupOpen(false);
+  };
+
   useEffect(() => {
     setActivePlatform(platform);
     setActiveGenre(genre);
     setActiveSort(sort);
 
     // close popups, if they were opened before navigating to '/'
-    setIsPlatformPopupOpen(false);
-    setIsGenrePopupOpen(false);
-    setIsSortPopupOpen(false);
+    resetPopups();
   }, [genre, platform, sort]);
 
   const onDownArrowClickHandler = (type: number) => {
+    resetPopups();
+
     switch (type) {
       case CategoryType.Platform:
         setIsPlatformPopupOpen(!isPlatformPopupOpen);

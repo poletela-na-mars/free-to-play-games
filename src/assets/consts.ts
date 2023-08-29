@@ -1,4 +1,4 @@
-export const ServerURL = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
+export const ServerURL = 'https://free-to-play-games-database.p.rapidapi.com/api';
 export const LIMIT_GAMES = 16;
 
 export const platformsList = ['All Platforms', 'Windows (PC)', 'Browser (Web)'];
@@ -33,3 +33,9 @@ export enum Status {
   SUCCESS = 'success',
   ERROR = 'error',
 }
+
+// TODO - Warning: in production sensitive info should be hidden
+export const sensitiveHeaders = {
+  'X-RapidAPI-Key': '6620decf15msh097fc5744cbf35fp1dc413jsn907640f36a5c',
+  'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+};

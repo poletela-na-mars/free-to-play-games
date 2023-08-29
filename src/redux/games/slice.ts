@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchGames } from './asyncActions';
 
-import { FullGameData, GamesState } from '../../types/redux/types';
+import { FullGameInList, GamesState } from '../../types/redux/types';
 
 import { Status } from '../../assets/consts';
 
@@ -16,7 +16,7 @@ const gamesSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    setGames(state, action: PayloadAction<FullGameData[]>) {
+    setGames(state, action: PayloadAction<FullGameInList[]>) {
       state.games = action.payload;
     },
     setCurrentPage(state, action: PayloadAction<number>) {

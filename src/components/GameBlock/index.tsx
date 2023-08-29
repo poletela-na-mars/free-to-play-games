@@ -3,11 +3,11 @@ import React, { forwardRef } from 'react';
 
 import { convertDate } from '../../utils/dateConverter';
 
-import { Game } from '../../types/redux/types';
+import { GameInList } from '../../types/redux/types';
 
 import styles from '../../scss/components/GameBlock.module.scss';
 
-type GameBlockProps = Game & { lastEl: boolean } & { ref?: React.Ref<HTMLLIElement> };
+type GameBlockProps = GameInList & { lastEl: boolean } & { ref?: React.Ref<HTMLLIElement> };
 
 export const GameBlock: React.ForwardRefExoticComponent<GameBlockProps> = forwardRef(
     ({ id, title, genre, release_date, publisher, thumbnail, lastEl }: GameBlockProps, ref) => {

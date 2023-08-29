@@ -14,7 +14,7 @@ import { fetchGames } from '../../redux/games/asyncActions';
 import { setCurrentPage, setGames } from '../../redux/games/slice';
 
 import { Status } from '../../assets/consts';
-import { Game } from '../../types/redux/types';
+import { GameInList } from '../../types/redux/types';
 
 import styles from './../../scss/components/GamesList.module.scss';
 
@@ -79,7 +79,7 @@ export const GamesList = () => {
     getGames();
   }, [shouldFetchData]);
 
-  const mappedGames = games.map((game: Game, idx) => {
+  const mappedGames = games.map((game: GameInList, idx) => {
     const lastEl = idx === games.length - 1;
     return <GameBlock key={game.id} lastEl={lastEl} ref={ref} {...game} />
   });

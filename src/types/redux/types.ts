@@ -7,14 +7,14 @@ export interface FilterState {
 }
 
 export interface GamesState {
-  games: FullGameData[];
+  games: FullGameInList[];
   status: Status;
   currentPage: number;
 }
 
 export type FetchGamesArgs = FilterState & { currentPage: number };
 
-export interface Game {
+export interface GameInList {
   id: number;
   title: string;
   thumbnail: string;
@@ -23,9 +23,46 @@ export interface Game {
   release_date: string;
 }
 
-export interface FullGameData extends Game {
+export interface FullGameInList extends GameInList {
   developer: string;
   freetogame_profile_url: string;
   game_url: string;
   short_description: string;
+}
+
+export interface Screenshot {
+  id: number;
+  image: string;
+}
+
+export interface SystemReq {
+  os: string;
+  processor: string;
+  memory: string;
+  graphics: string;
+  storage: string;
+}
+
+export interface Game extends GameInList {
+  developer: string;
+  screenshots: Screenshot[];
+  minimum_system_requirements: SystemReq;
+}
+
+export interface FullGame extends Game {
+  status: string;
+  short_description: string;
+  description: string;
+  game_url: string;
+  platform: string;
+  freetogame_profile_url: string;
+}
+
+export interface GameState {
+  game: Game | {};
+  status: Status;
+}
+
+export interface FetchGameArgs {
+  id: string;
 }
