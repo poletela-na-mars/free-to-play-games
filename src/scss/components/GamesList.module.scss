@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../components/ErrorBlock.module';
 
 .root {
   display: grid;
@@ -35,27 +36,7 @@
   }
 
   .errorBlock {
-    margin: 50px 0;
-    text-align: center;
     grid-column: 1 / span 4;
-    color: $silver-lake-blue;
-
-    h2 {
-      font-size: calc(1vw + 0.8rem);
-      font-weight: 400;
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-
-    p {
-      font-weight: 300;
-      font-size: calc(1vw + 0.65rem);
-    }
-
-    img {
-      max-width: calc(10vw + 4rem);
-      max-height: calc(10vw + 4rem);
-    }
   }
 
   .notFoundBlock {

@@ -89,9 +89,11 @@ export const GamesList = () => {
       <div className={styles.root}>
         {
           status === Status.ERROR
-              ? <ErrorBlock />
-              :
-              status === Status.LOADING && !mappedGames.length
+              ?
+              <div className={styles.errorBlock}>
+                <ErrorBlock errorText={<p>Unfortunately, the data could not be retrieved. Try again later.</p>} />
+              </div>
+              : status === Status.LOADING && !mappedGames.length
                   ? skeletons
                   : (mappedGames.length ? mappedGames : <NotFoundGamesBlock />)
         }

@@ -1,0 +1,26 @@
+@import '../variables';
+
+.errorBlock {
+  //margin: 50px 0;
+  text-align: center;
+  color: $silver-lake-blue;
+  word-break: break-word;
+
+  h2 {
+    font-size: calc(1vw + 0.8rem);
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: calc(1vw + 0.65rem);
+    line-height: 1.5;
+  }
+
+  img {
+    max-width: calc(10vw + 4rem);
+    max-height: calc(10vw + 4rem);
+  }
+}

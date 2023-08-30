@@ -1,11 +1,15 @@
-import styles from '../../scss/components/GamesList.module.scss';
 import error from '../../assets/img/error-banner.png';
+import styles from '../../scss/components/ErrorBlock.module.scss';
 
-export const ErrorBlock = () => {
+type ErrorBlockProps = {
+  errorText: JSX.Element;
+}
+
+export const ErrorBlock = ({ errorText }: ErrorBlockProps) => {
   return (
       <div className={styles.errorBlock}>
         <h2>Oops, the error has occurred</h2>
-        <p>Unfortunately, the data could not be retrieved. Try again later.</p>
+        {errorText}
         <img src={error} alt='Error' />
       </div>
   );
