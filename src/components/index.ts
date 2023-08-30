@@ -5,3 +5,4 @@ export * from './Skeleton';
 export * from './GameBlock';
 export * from './ErrorBlock';
 export * from './NotFoundGamesBlock';
+export * from './Loader';

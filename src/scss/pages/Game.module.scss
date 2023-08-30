@@ -1,9 +1,19 @@
 @import '../variables';
 
+.container {
+  min-height: calc(100vh - (1vw + 3rem + 40px + 80px + 40px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .root {
+  width: 100%;
+
   @media (max-width: 730px) {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 1fr 0.5fr 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr;
+    grid-auto-rows: 1fr;
     grid-gap: 16px 16px;
 
     .hero {
@@ -29,11 +39,18 @@
     }
   }
 
+  @media (max-width: 1060px) {
+    .detailsBlock {
+      justify-self: center !important;
+    }
+  }
+
   display: grid;
   justify-content: center;
   justify-items: center;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
   grid-gap: 20px 32px;
 
   .hero {
@@ -43,13 +60,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 
     .backButton {
+      @media (min-width: 1600px) {
+        font-size: calc(1vw + 0.2rem) !important;
+      }
+
       all: unset;
-      width: 100px;
-      height: 30px;
-      font-size: 16px;
+      //width: 100px;
+      //height: 30px;
+      font-size: min(16px, calc(1vw + 0.5rem));
       background: transparent;
       border: none;
       position: relative;
@@ -138,8 +159,8 @@
     justify-self: start;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, min-content);
+    //grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     justify-content: center;
     justify-items: start;
     grid-gap: 16px 32px;
@@ -156,6 +177,7 @@
       font-weight: 300;
       font-size: calc(1vw + 0.5rem);
       margin: 0;
+      word-break: break-all;
     }
 
     .genre {
@@ -217,7 +239,7 @@
     .requirementsLabel {
       text-align: center;
       color: $snow;
-      font-weight: 300;
+      font-weight: 400;
       font-size: calc(1vw + 0.65rem);
       margin: 0 0 16px;
     }
@@ -229,6 +251,7 @@
       flex-direction: column;
 
       li, span {
+        font-weight: 300;
         font-size: calc(1vw + 0.5rem);
       }
 

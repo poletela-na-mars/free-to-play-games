@@ -6,7 +6,6 @@ import { sensitiveHeaders, ServerURL } from '../../assets/consts';
 
 import { FetchGameArgs, FullGame } from '../../types/redux/types';
 
-// TODO - pass {id: 'string!'}
 export const fetchGame = createAsyncThunk<FullGame, FetchGameArgs>(
     'game/fetchGame',
     async (params) => {
