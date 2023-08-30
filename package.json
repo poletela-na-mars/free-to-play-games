@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.2.7",
     "axios": "^1.4.0",
     "axios-retry": "^3.7.0",
+    "nuka-carousel": "^6.0.3",
     "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.1",

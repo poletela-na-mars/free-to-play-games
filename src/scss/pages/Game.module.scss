@@ -1,0 +1,246 @@
+@import '../variables';
+
+.root {
+  @media (max-width: 730px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 1fr 0.5fr 1fr 1fr;
+    grid-gap: 16px 16px;
+
+    .hero {
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 1;
+    }
+
+    .detailsBlock {
+      grid-column: 1 / span 1 !important;
+      grid-row: 2 / span 1 !important;
+      align-self: start !important;
+      justify-self: center !important;
+    }
+
+    .carousel {
+      grid-column: 1 / span 1 !important;
+      grid-row: 3 / span 1 !important;
+    }
+
+    .requirements {
+      grid-column: 1 / span 1 !important;
+      grid-row: 4 / span 1 !important;
+    }
+  }
+
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 20px 32px;
+
+  .hero {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .backButton {
+      all: unset;
+      width: 100px;
+      height: 30px;
+      font-size: 16px;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: $snow;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -99999;
+        transition: all .4s;
+      }
+
+      &::before {
+        transform: translate(0%, 0%);
+        width: 100%;
+        height: 100%;
+        background: $oxford-blue;
+        border-radius: 10px;
+      }
+
+      &::after {
+        transform: translate(10px, 10px);
+        width: 35px;
+        height: 35px;
+        background: #ffffff15;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 50px;
+      }
+
+      &:hover::before {
+        transform: translate(5%, 20%);
+        width: 110%;
+        height: 110%;
+      }
+
+      &:hover::after {
+        border-radius: 10px;
+        transform: translate(0, 0);
+        width: 100%;
+        height: 100%;
+      }
+
+      &:active::after {
+        transition: 0s;
+        transform: translate(0, 5%);
+      }
+    }
+
+    .thumbnail {
+      margin: 32px 0 16px 0;
+      border-radius: $light-border-radius;
+      width: 100%;
+      //height: 100%;
+      object-fit: cover;
+      max-width: calc(5vw + 50rem);
+      max-height: calc(5vw + 50rem);
+      box-shadow: $box-shadow;
+    }
+
+    .title {
+      color: $snow;
+      font-weight: 700;
+      font-size: calc(1vw + 0.8rem);
+      margin: 8px 0;
+    }
+  }
+
+  .detailsBlock {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    align-self: center;
+    justify-self: start;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
+    justify-content: center;
+    justify-items: start;
+    grid-gap: 16px 32px;
+
+    span {
+      color: $silver-lake-blue;
+      font-weight: 300;
+      font-size: calc(1vw + 0.5rem);
+      margin: 0;
+    }
+
+    p {
+      color: $snow;
+      font-weight: 300;
+      font-size: calc(1vw + 0.5rem);
+      margin: 0;
+    }
+
+    .genre {
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 1;
+    }
+
+    .releaseDate {
+      grid-column: 1 / span 1;
+      grid-row: 2 / span 1;
+    }
+
+    .developer {
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 1;
+    }
+
+    .publisher {
+      grid-column: 2 / span 1;
+      grid-row: 2 / span 1;
+    }
+  }
+
+  .carousel {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+    place-self: center;
+
+    svg {
+      fill: $snow;
+      cursor: pointer;
+    }
+
+    .arrow {
+      width: 32px;
+      height: 32px;
+    }
+
+    .screenshotLabel {
+      text-align: center;
+      color: $snow;
+      font-weight: 300;
+      font-size: calc(1vw + 0.65rem);
+      margin: 0 0 16px;
+    }
+
+    .screenshot {
+      width: 100%;
+      object-fit: cover;
+      max-height: calc(2vw + 20rem);
+    }
+  }
+
+  .requirements {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+    place-self: center;
+
+    .requirementsLabel {
+      text-align: center;
+      color: $snow;
+      font-weight: 300;
+      font-size: calc(1vw + 0.65rem);
+      margin: 0 0 16px;
+    }
+
+    .requirementsList {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+
+      li, span {
+        font-size: calc(1vw + 0.5rem);
+      }
+
+      li {
+        color: $snow;
+        margin-bottom: 10px;
+      }
+
+      span {
+        line-height: 1.5;
+        color: $silver-lake-blue;
+      }
+    }
+  }
+}

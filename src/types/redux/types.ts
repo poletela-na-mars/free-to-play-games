@@ -59,7 +59,7 @@ export interface FullGame extends Game {
 }
 
 export interface GameState {
-  game: Game | {};
+  game: Partial<Game>;
   status: Status;
 }
 
