@@ -9,6 +9,7 @@ import { ErrorBlock, GameBlock, NotFoundGamesBlock, Skeleton } from '../index';
 import { AppDispatch } from '../../redux/store';
 import { selectFilter } from '../../redux/filter/selectors';
 import { selectGames } from '../../redux/games/selectors';
+import { selectGame } from '../../redux/game/selectors';
 import { setFilters } from '../../redux/filter/slice';
 import { fetchGames } from '../../redux/games/asyncActions';
 import { setCurrentPage, setGames } from '../../redux/games/slice';
@@ -25,6 +26,7 @@ export const GamesList = () => {
 
   const { platform, genre, sort } = useSelector(selectFilter);
   const { games, status, currentPage } = useSelector(selectGames);
+  const { game } = useSelector(selectGame);
 
   const [shouldFetchData, setShouldFetchData] = useState(false);
 
@@ -43,7 +45,7 @@ export const GamesList = () => {
   useEffect(() => {
     if (inView) {
       dispatch(setCurrentPage(currentPage + 1));
-      setShouldFetchData(!shouldFetchData);
+      setShouldFetchData(true);
     }
   }, [inView]);
 
@@ -69,14 +71,22 @@ export const GamesList = () => {
 
       dispatch(setCurrentPage(0));
       dispatch(setGames([]));
-      setShouldFetchData(!shouldFetchData);
+      setShouldFetchData(true);
     }
 
     isMounted.current = true;
   }, [platform, genre, sort]);
 
   useEffect(() => {
-    getGames();
+    if (!Object.keys(game).length) setShouldFetchData(true);
+  }, [game]);
+
+  useEffect(() => {
+    if (shouldFetchData) {
+      getGames();
+      setShouldFetchData(false);
+    }
+
   }, [shouldFetchData]);
 
   const mappedGames = games.map((game: GameInList, idx) => {
