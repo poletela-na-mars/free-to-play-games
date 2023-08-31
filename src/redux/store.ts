@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import filterSlice from './filter/slice';
 import gamesSlice from './games/slice';
 import gameSlice from './game/slice';

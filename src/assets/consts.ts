@@ -1,5 +1,7 @@
-export const ServerURL = 'https://free-to-play-games-database.p.rapidapi.com/api';
 export const LIMIT_GAMES = 16;
+export const NO_REQUEST_TIME = 5 * 60 * 1000;
+
+export const ServerURL = 'https://free-to-play-games-database.p.rapidapi.com/api';
 
 export const platformsList = ['All Platforms', 'Windows (PC)', 'Browser (Web)'];
 export const platformsListLen = platformsList.length;
@@ -39,5 +41,3 @@ export const sensitiveHeaders = {
   'X-RapidAPI-Key': '6620decf15msh097fc5744cbf35fp1dc413jsn907640f36a5c',
   'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
 };
-
-export const NO_REQUEST_TIME = 5 /** 60*/ * 1000;

@@ -20,7 +20,7 @@ import { GameInList } from '../../types/redux/types';
 import styles from './../../scss/components/GamesList.module.scss';
 
 export const GamesList = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const isMounted = useRef<boolean>(false);
 
@@ -86,7 +86,6 @@ export const GamesList = () => {
       getGames();
       setShouldFetchData(false);
     }
-
   }, [shouldFetchData]);
 
   const mappedGames = games.map((game: GameInList, idx) => {
@@ -110,4 +109,3 @@ export const GamesList = () => {
       </div>
   );
 };
-

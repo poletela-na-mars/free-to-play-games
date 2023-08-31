@@ -22,7 +22,7 @@ export const TopPanel = () => {
   const [activeGenre, setActiveGenre] = useState(0);
   const [activeSort, setActiveSort] = useState(0);
 
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch: AppDispatch = useDispatch();
 
   const resetPopups = () => {
     setIsPlatformPopupOpen(false);

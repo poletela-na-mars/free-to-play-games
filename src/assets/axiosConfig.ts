@@ -15,7 +15,7 @@ import { NO_REQUEST_TIME, ServerURL } from './consts';
 
 export const axiosHomeInstance = axios.create({
   baseURL: ServerURL,
-  timeout: 10000
+  timeout: 30000,
 });
 
 axiosRetry(axiosHomeInstance, {
@@ -39,7 +39,7 @@ axiosRetry(axiosHomeInstance, {
 
 export const axiosGameInstance = axios.create({
   baseURL: ServerURL,
-  timeout: 10000,
+  timeout: 30000,
   headers: { 'Cache-Control': 'no-cache' },
 });
 
@@ -54,15 +54,6 @@ const ttlCache = (delegate: AxiosStorage, ttl: number): AxiosStorage => {
       return delegate.set(key, value, currentRequest);
     },
     find(key: string, currentRequest: CacheRequestConfig | undefined): MaybePromise<StorageValue> {
-      // localStorage.forEachKeys
-      // {
-      //   key ->
-      //
-      //   if (isExpired(value as ? CachedStorageValue | StaleStorageValue)) {
-      //     localStorage.removeItem(key)
-      //   }
-      // }
-
       return delegate.get(key, currentRequest);
     }
   });

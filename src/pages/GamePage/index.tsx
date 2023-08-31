@@ -20,13 +20,13 @@ import styles from '../../scss/pages/Game.module.scss';
 
 export const GamePage = () => {
   const { id } = useParams();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
   const { game, status } = useSelector(selectGame);
 
   const getGame = async () => {
-    dispatch(fetchGame({
+    await dispatch(fetchGame({
           id: id as string
         })
     );

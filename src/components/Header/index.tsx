@@ -11,7 +11,7 @@ import { ReactComponent as GameControllerIcon } from './../../assets/img/game-co
 import styles from './../../scss/components/Header.module.scss';
 
 export const Header = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
   const onHomeNavigateHandler = async () => {
