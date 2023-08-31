@@ -40,4 +40,4 @@ export const sensitiveHeaders = {
   'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
 };
 
-export const NO_REQUEST_TIME = 10;
+export const NO_REQUEST_TIME = 5 /** 60*/ * 1000;

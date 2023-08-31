@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// TODO - axiosGameInstance
-import { axiosHomeInstance } from '../../assets/axiosConfig';
 
-import { sensitiveHeaders, ServerURL } from '../../assets/consts';
+import { axiosGameInstance } from '../../assets/axiosConfig';
+
+import { sensitiveHeaders } from '../../assets/consts';
 
 import { FetchGameArgs, FullGame } from '../../types/redux/types';
 
@@ -11,14 +11,14 @@ export const fetchGame = createAsyncThunk<FullGame, FetchGameArgs>(
     async (params) => {
       const options = {
         method: 'GET',
-        url: `${ServerURL}/game`,
+        url: '/game',
         params: {
           ...params
         },
         headers: sensitiveHeaders,
       };
 
-      const { data } = await axiosHomeInstance.request<FullGame>(options);
+      const { data } = await axiosGameInstance.request<FullGame>(options);
 
       return data;
     }
