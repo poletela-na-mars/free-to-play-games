@@ -16,7 +16,8 @@ const gameSlice = createSlice({
   reducers: {
     setGame(state, action: PayloadAction<Game>) {
       state.game = action.payload;
-    },
+      state.status = Status.SUCCESS;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchGame.pending, (state) => {

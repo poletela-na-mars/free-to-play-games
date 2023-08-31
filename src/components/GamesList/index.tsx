@@ -78,7 +78,7 @@ export const GamesList = () => {
   }, [platform, genre, sort]);
 
   useEffect(() => {
-    if (!Object.keys(game).length) setShouldFetchData(true);
+    if (!Object.keys(game).length || !games.length) setShouldFetchData(true);
   }, [game]);
 
   useEffect(() => {
